@@ -1,0 +1,14 @@
+{% extends "./SiteTemplate.html" %}
+
+{% block content %}
+{% if name %}
+<p>
+    Hello {{name}}!
+</p>
+{% endif %}
+<form method="post">    
+    <label for="name">Enter you name</label>
+    <input name="name" id="name">
+    <button type="submit">Say Hello</button>
+</form>
+{% endblock %}

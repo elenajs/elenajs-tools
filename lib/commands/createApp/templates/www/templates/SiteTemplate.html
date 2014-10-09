@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>    
+        <title>
+            {{ title }}
+        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        {% block head %}
+        <link rel="stylesheet" href="/css/main.css">
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+        <nav>
+            {% block nav %}
+            <a href="/index.html">Home</a>
+            <a href="/sample-form.html">Sample form</a>
+            {% endblock %}
+        </nav>  
+    <content>
+        {% block content %}{% endblock %}
+    </content>    
+    <footer>
+        {% block foter %}{% endblock %}
+    </footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+# ejs-tools create-app 
+
+Creates an Elena.js application from scratch.
+
+## SYNOPSYS
+
+```
+ejs-tools create-app
+ejs-tools create-app [parameters]
+ejs-tools create-app --help
+
+Accepted parameters: 
+
+{% for parameter in parameters %}
+    {{parameter.name}}  {{parameter.description}}
+{% endfor %}
+```
+
+## DESCRIPTION
+
+This command creates a ready to use application for Elena.js.
+
+If the application name is not provided, the command will ask you
+to provide one typing in stdin.
+
+The command will ask also for configuration stuff interactively providing 
+default replies
+

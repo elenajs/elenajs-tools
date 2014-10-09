@@ -1,0 +1,74 @@
+if (typeof process !== 'undefined' && typeof define === 'undefined') {
+    var ejs = require('elenajs'),
+        path = require('path');
+
+    var amdConfig = ejs.createConfig({
+        packages: [
+            {
+                name: 'templates',
+                location: path.resolve(__dirname, '../www/templates')
+            },
+            {
+                name: 'css',
+                location: path.resolve(__dirname, '../www/css')
+            },
+            {
+                name: 'media',
+                location: path.resolve(__dirname, '../www/media')
+            }
+        ]
+    }, path.resolve(__dirname, '../package.json'));
+
+    ejs.require(amdConfig, [__filename]);
+
+} else {
+    require([
+        '{{amdName}}/Server',
+        'dojo/on',
+        'elenajs/node!os',
+        'elenajs/node!path',
+        'elenajs/logger!{{amdName}}',
+        'elenajs/logger!request',
+        'elenajs/logging/FileAppender'
+    ], function (Server, on, os, path, logger, requestLogger, Appender) {
+        var server = new Server(),
+            tmpDir = os.tmpdir();
+        on(server, 'start', function () {
+            logger.log('server started on port: ' + server.port);
+        });
+        on(server, 'stop', function () {
+            logger.log('server stopped');
+        });
+        on(server, 'request', function (data) {
+            requestLogger.info('Requiring: ' + data.response.statusCode + ' ' + data.request.url);
+        });
+        on(server, 'message', function (data) {
+            logger.info(data);
+        });
+        on(server, 'error', function (data) {
+            requestLogger.error("ERROR - " +
+                data.statusCode + ' ' + (data.request && data.request.url || '-') + ": "
+                + data.error);
+
+            if (data.statusCode === 500 || !data.statusCode) {
+                requestLogger.error(data.error.stack);
+            }
+        });
+
+        new Appender({
+            categories: ['request'],
+            fileBaseName: path.resolve(tmpDir, '{{appName}}-requests'),
+            maxBackup: 3,
+            maxFileSize: '20m'
+        });
+
+        new Appender({
+            levels: ['warn', 'error'],
+            fileBaseName: path.resolve(tmpDir, '{{appName}}'),
+            maxBackup: 3,
+            maxFileSize: '20m',
+        });
+        server.start();
+        console.log('server started on port:', server.port);
+    });
+}

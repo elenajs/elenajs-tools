@@ -1,0 +1,9 @@
+define([
+    "elenajs/declare",
+    "elenajs/Server",
+    "./_dispatchers"
+], function(declare, _Server, dispatchers) {
+    return declare('{{amdName}}/Server', _Server, {
+        dispatchers: dispatchers
+    });
+});

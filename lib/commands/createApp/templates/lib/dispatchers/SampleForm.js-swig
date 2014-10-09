@@ -1,0 +1,30 @@
+define([
+    "elenajs/declare",
+    "dojo/_base/lang",
+    "elenajs/dispatchers/RequestDispatcher",
+    "elenajs/renderers/TemplateRenderer",
+    "swig!templates/sampleForm.html"
+], function (
+    declare,
+    lang,
+    RequestDispatcher,
+    TemplateRenderer,
+    template
+    ) {
+    return declare('{{amdName}}/dispatchers/SampleForm', RequestDispatcher, {
+        matcher: /^\/sample-form.html$/i,
+        title: 'Sample Form',
+        render: function (httpContext) {
+            var self = this;
+           
+            this.processRequest(httpContext).then(function (data) {
+                new TemplateRenderer({
+                    httpContext: httpContext,
+                    templateObj: template
+                }).render(lang.mixin({}, self, data));
+            } , function (err) {                
+                httpContext.signal(err);
+            });
+        }
+    });
+});

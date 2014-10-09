@@ -1,0 +1,22 @@
+{
+    "name": "elenajs-tools",
+    "amdName": "ejstools",
+    "version": "0.0.1",
+    "author": {
+        "name": "kiuma",
+        "email": "kiuma72@gmail.com"
+    },
+    "main": "./lib/main",
+    "bin": {
+	"ejs-tools": "./bin/ejs-tools"
+    },
+    "directories": {
+        "lib": "./lib"
+    },
+    "dependencies": {
+        "elenajs": "https://github.com/elenajs/elenajs/archive/develop.tar.gz",
+        "minimist": "1.1.x",
+        "filewalker": "0.1.x",
+        "swig": "1.4.x"
+    }
+}

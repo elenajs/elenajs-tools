@@ -1,0 +1,31 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+define([
+    "elenajs/declare",
+    "elenajs/dispatchers/RequestDispatcher",
+    "elenajs/renderers/TemplateRenderer",
+    "swig!templates/index.html"
+], function(
+        declare,
+        RequestDispatcher,
+        TemplateRenderer,
+        template
+        ) {
+
+
+    return declare('{{amdName}}/dispatchers/Index', RequestDispatcher, {
+        matcher: /^\/$|^\/index.html$/i,
+        title: 'Home',
+        render: function(httpContext) {           
+            var self = this;
+            new TemplateRenderer({
+                httpContext: httpContext,
+                templateObj: template
+            }).render(self);
+        }
+    });
+});
