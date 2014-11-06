@@ -11,6 +11,10 @@ define([
     TemplateRenderer,
     template
     ) {
+    
+    var renderer = new TemplateRenderer({
+        templateObj: template
+    });
     return declare('{{amdName}}/dispatchers/SampleForm', RequestDispatcher, {
         matcher: /^\/sample-form.html$/i,
         title: 'Sample Form',
@@ -18,10 +22,7 @@ define([
             var self = this;
            
             this.processRequest(httpContext).then(function (data) {
-                new TemplateRenderer({
-                    httpContext: httpContext,
-                    templateObj: template
-                }).render(lang.mixin({}, self, data));
+                renderer.render(httpContext, lang.mixin({}, self, data));
             } , function (err) {                
                 httpContext.signal(err);
             });

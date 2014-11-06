@@ -16,16 +16,15 @@ define([
         template
         ) {
 
-
+    var renderer = new TemplateRenderer({
+        templateObj: template
+    });
     return declare('{{amdName}}/dispatchers/Index', RequestDispatcher, {
         matcher: /^\/$|^\/index.html$/i,
         title: 'Home',
         render: function(httpContext) {           
             var self = this;
-            new TemplateRenderer({
-                httpContext: httpContext,
-                templateObj: template
-            }).render(self);
+            renderer.render(httpContext, self);
         }
     });
 });
