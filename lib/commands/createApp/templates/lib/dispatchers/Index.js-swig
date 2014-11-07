@@ -8,7 +8,7 @@ define([
     "elenajs/declare",
     "elenajs/dispatchers/RequestDispatcher",
     "elenajs/renderers/TemplateRenderer",
-    "swig!templates/index.html"
+    "swig!pages/index.html"
 ], function(
         declare,
         RequestDispatcher,

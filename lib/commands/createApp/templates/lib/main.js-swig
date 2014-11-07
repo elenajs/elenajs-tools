@@ -5,8 +5,8 @@ if (typeof process !== 'undefined' && typeof define === 'undefined') {
     var amdConfig = ejs.createConfig({
         packages: [
             {
-                name: 'templates',
-                location: path.resolve(__dirname, '../www/templates')
+                name: 'pages',
+                location: path.resolve(__dirname, '../www/pages')
             },
             {
                 name: 'css',

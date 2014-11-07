@@ -3,7 +3,7 @@ define([
     "dojo/_base/lang",
     "elenajs/dispatchers/RequestDispatcher",
     "elenajs/renderers/TemplateRenderer",
-    "swig!templates/sampleForm.html"
+    "swig!pages/sampleForm.html"
 ], function (
     declare,
     lang,
