@@ -1,0 +1,21 @@
+{
+    "name": "{{appName}}",
+    "amdName": "{{amdName}}",
+    "version": "0.0.1",
+    "private": true,
+    "author": {
+        "name": "{{authorName}}",
+        "email": "{{authorEmail}}"
+    },
+    "keywords": [
+        "elenajs",
+        "plugin",
+        "{{amdName}}"
+    ],
+    "main": "./lib/main",
+    "directories": {
+        "lib": "./lib"
+    },
+    "dependencies": {
+    }
+}

@@ -1,0 +1,28 @@
+# ejs-tools create-app 
+
+Creates an Elena.js plugin module from scratch.
+
+## SYNOPSYS
+
+```
+ejs-tools create-plugin
+ejs-tools create-plugin [parameters]
+ejs-tools create-plugin --help
+
+Accepted parameters: 
+
+{% for parameter in parameters %}
+    {{parameter.name}}  {{parameter.description}}
+{% endfor %}
+```
+
+## DESCRIPTION
+
+This command creates a plugin module that can be used inElena.js.
+
+If the plugin name is not provided, the command will ask you
+to provide one typing in stdin.
+
+The command will ask also for configuration stuff interactively providing 
+default replies
+

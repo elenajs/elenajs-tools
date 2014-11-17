@@ -1,0 +1,9 @@
+define([
+    "elenajs/declare",
+    "elenajs/_base/Mixin"
+], function(declare, Mixin) {
+    
+    return declare("{{amdName}}", Mixin, {
+        //methods here
+    });
+});
